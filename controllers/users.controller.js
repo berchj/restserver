@@ -1,6 +1,7 @@
-const { response } = require('express')
-const getUsers =  (req, res = response) => {
-    res.json({ message: 'get - controller' })
+const { response, request } = require('express')
+const getUsers =  (req = request, res = response) => {
+    const {name,api_key} = req.query
+    res.json({name,api_key})
 }
 const postUser = (req, res = response) => {
     res.json({
@@ -9,7 +10,8 @@ const postUser = (req, res = response) => {
     })
 }
 const putUser = (req, res = response) => {
-    res.status(201).json({ message: 'put - controller' })
+    const id = req.params.id
+    res.json({id})
 }
 const deleteUser = (req, res = response) => {
     res.status(201).json({ message: 'delete - controller' })
